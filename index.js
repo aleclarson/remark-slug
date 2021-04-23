@@ -19,9 +19,7 @@ function transformer(ast) {
   function visitor(node) {
     var data = node.data || (node.data = {})
     var props = data.hProperties || (data.hProperties = {})
-    var id = props.id
-
-    id = id ? slugs.slug(id, true) : slugs.slug(toString(node))
+    var id = slugs.slug(props.id || toString(node), true)
 
     data.id = id
     props.id = id
